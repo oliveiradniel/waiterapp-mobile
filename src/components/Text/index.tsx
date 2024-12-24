@@ -8,8 +8,8 @@ interface TextProps {
 }
 
 export const Text = styled.Text<TextProps>`
-  font-family: ${({ weight }) => weight ? `GeneralSans-${weight}` : 'General-Sans-400'};
-  color: ${({ color }) => color || '#333'};
-  size: ${({ size }) => size ? `${size}px` : '16px'};
-  opacity: ${({ opacity }) => opacity || 1};
+  font-family: ${({ weight = 'GeneralSans-400' }) => `GeneralSans-${weight}`};
+  color: ${({ color = '#333' }) => color};
+  font-size: ${({ size = '16px' }) => `${size}px`};
+  opacity: ${({ opacity = 1 }) => opacity};
 `;
