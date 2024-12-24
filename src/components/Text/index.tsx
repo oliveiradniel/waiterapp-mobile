@@ -1,6 +1,4 @@
-import styled from 'styled-components';
-
-import { Text as RNText } from 'react-native';
+import styled from 'styled-components/native';
 
 interface TextProps {
   weight?: '400' | '600' | '700';
@@ -9,7 +7,7 @@ interface TextProps {
   opacity?: number;
 }
 
-export const Text = styled(RNText)<TextProps>`
+export const Text = styled.Text<TextProps>`
   font-family: ${({ weight }) => weight ? `GeneralSans-${weight}` : 'General-Sans-400'};
   color: ${({ color }) => color || '#333'};
   size: ${({ size }) => size ? `${size}px` : '16px'};
