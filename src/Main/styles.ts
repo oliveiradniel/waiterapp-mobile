@@ -14,3 +14,5 @@ export const CategoriesContainer = styled.View`
   height: 73px;
   margin-top: 34px;
 `;
+
+export const Footer = styled.View``;
