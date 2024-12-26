@@ -15,4 +15,12 @@ export const CategoriesContainer = styled.View`
   margin-top: 34px;
 `;
 
-export const Footer = styled.View``;
+export const Footer = styled.View`
+  background-color: #fff;
+  min-height: 110px;
+  padding: 16px 24px;
+`;
+
+export const FooterContainer = styled.SafeAreaView`
+
+`;

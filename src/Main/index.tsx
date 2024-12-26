@@ -1,7 +1,8 @@
+import { Button } from '../components/Button';
 import { Categories } from '../components/Categories';
 import { Header } from '../components/Header';
 
-import { Container, CategoriesContainer } from './styles';
+import { Container, CategoriesContainer, Footer, FooterContainer } from './styles';
 
 export function Main() {
   return (
@@ -11,6 +12,12 @@ export function Main() {
       <CategoriesContainer>
         <Categories />
       </CategoriesContainer>
+
+      <Footer>
+        <FooterContainer>
+          <Button />
+        </FooterContainer>
+      </Footer>
     </Container>
   );
 }
