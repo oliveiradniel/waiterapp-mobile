@@ -1,3 +1,5 @@
+import { formatCurrency } from '../../utils/formatCurrency';
+
 import products from '../../mocks/products';
 
 import { FlatList } from 'react-native';
@@ -27,7 +29,9 @@ export function Menu() {
             >
               {product.description}
             </Text>
-            <Text color='#333' size={14} weigth={600}>{product.price}</Text>
+            <Text color='#333' size={14} weigth={600}>
+              {formatCurrency(product.price)}
+            </Text>
           </ProductDetails>
         </Product>
       )}
