@@ -15,3 +15,10 @@ export const ProductDetails = styled.View`
   flex: 1;
   margin-left: 16px;
 `;
+
+export const Separator = styled.View`
+  background-color: rgba(204, 204, 204, 0.3);
+  height: 1px;
+  margin: 24px 0;
+  width: 100%;
+`;

@@ -6,13 +6,14 @@ import { FlatList } from 'react-native';
 
 import { Text } from '../Text';
 
-import { ProductImage, Product, ProductDetails } from './styles';
+import { ProductImage, Product, ProductDetails, Separator } from './styles';
 
 export function Menu() {
   return (
     <FlatList
       data={products}
       contentContainerStyle={{ paddingHorizontal: 24 }}
+      ItemSeparatorComponent={Separator}
       keyExtractor={product => product._id}
       style={{ marginTop: 32 }}
       renderItem={({ item: product }) => (
