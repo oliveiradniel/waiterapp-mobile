@@ -13,6 +13,7 @@
     "expo": "~52.0.20",
     "expo-font": "~13.0.2",
     "expo-status-bar": "~2.0.0",
+    "intl": "^1.2.5",
     "react": "18.3.1",
     "react-native": "0.76.5",
     "react-native-svg": "15.8.0"
