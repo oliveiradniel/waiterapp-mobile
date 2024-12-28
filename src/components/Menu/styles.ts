@@ -22,3 +22,9 @@ export const Separator = styled.View`
   margin: 24px 0;
   width: 100%;
 `;
+
+export const AddToCardButton = styled.TouchableOpacity`
+  bottom: 0;
+  position: absolute;
+  right: 0;
+`;

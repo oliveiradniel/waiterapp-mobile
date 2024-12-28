@@ -5,6 +5,7 @@ import { Categories } from '../components/Categories';
 import { Header } from '../components/Header';
 import { Menu } from '../components/Menu';
 import { Container, CategoriesContainer, Footer, FooterContainer, MenuContainer } from './styles';
+import { TableModal } from '../components/TableModal';
 
 export function Main() {
   return (
@@ -26,6 +27,8 @@ export function Main() {
           <Button onPress={() => alert('onPress')}>Novo pedido</Button>
         </FooterContainer>
       </Footer>
+
+      <TableModal />
     </>
   );
 }
