@@ -17,6 +17,7 @@ export function TableModal({ onClose, visible }: TableModalProps) {
 
   return (
     <Modal
+      animationType='fade'
       transparent
       visible={visible}
     >
