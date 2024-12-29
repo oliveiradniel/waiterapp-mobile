@@ -12,12 +12,19 @@ import { Form, Input, ModalBody, ModalHeader, Overlay } from './styles';
 interface TableModalProps {
   visible: boolean;
   onClose: () => void;
+  // eslint-disable-next-line no-unused-vars
+  onSave: (table: string) => void;
 }
 
-export function TableModal({ onClose, visible }: TableModalProps) {
+export function TableModal({ visible, onClose, onSave }: TableModalProps) {
   const [table, setTable] = useState('');
 
   const isAndroid = Platform.OS === 'android';
+
+  function handleSave() {
+    onSave(table);
+    onClose();
+  }
 
   return (
     <Modal
@@ -43,7 +50,7 @@ export function TableModal({ onClose, visible }: TableModalProps) {
               onChangeText={setTable}
             />
 
-            <Button onPress={() => alert(table)} disabled={table.length === 0}>
+            <Button onPress={handleSave} disabled={table.length === 0}>
               Salvar
             </Button>
           </Form>

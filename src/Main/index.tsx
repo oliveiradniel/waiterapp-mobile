@@ -10,11 +10,16 @@ import { Container, CategoriesContainer, Footer, FooterContainer, MenuContainer 
 
 export function Main() {
   const [isTableModalVisible, setIsTableModalVisible] = useState(false);
+  const [selectedTable, setSelectedTable] = useState('');
+
+  function handleSaveTable(table: string) {
+    setSelectedTable(table);
+  }
 
   return (
     <>
       <Container>
-        <Header />
+        <Header selectedTable={selectedTable} />
 
         <CategoriesContainer>
           <Categories />
@@ -27,13 +32,16 @@ export function Main() {
 
       <Footer>
         <FooterContainer>
-          <Button onPress={() => setIsTableModalVisible(true)}>Novo pedido</Button>
+          {!selectedTable && (
+            <Button onPress={() => setIsTableModalVisible(true)}>Novo pedido</Button>
+          )}
         </FooterContainer>
       </Footer>
 
       <TableModal
-        onClose={() => setIsTableModalVisible(false)}
         visible={isTableModalVisible}
+        onClose={() => setIsTableModalVisible(false)}
+        onSave={handleSaveTable}
       />
     </>
   );
