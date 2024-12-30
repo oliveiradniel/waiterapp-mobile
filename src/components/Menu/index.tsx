@@ -11,15 +11,9 @@ import { Text } from '../Text';
 import { ProductImage, ProductContainer, ProductDetails, Separator, AddToCardButton } from './styles';
 import { PlusCircle } from '../Icons/PlusCircle';
 import { ProductModal } from '../ProductModal';
+import { Product } from '../../types/Product';
 
-interface Product {
-  _id: string;
-  name: string;
-  description: string;
-  imagePath: string;
-  price: number;
-  ingredients: { name: string; icon: string; _id: string; }[];
-}
+
 
 export function Menu() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -30,7 +24,7 @@ export function Menu() {
     setSelectedProduct(product);
   }
 
-  function handleCloseModal(product: Product) {
+  function handleCloseModal() {
     setIsModalVisible(false);
     setSelectedProduct(null);
   }

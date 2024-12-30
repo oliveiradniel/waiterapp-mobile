@@ -7,16 +7,10 @@ import { Text } from '../Text';
 import { CloseButton, Footer, FooterContainer, Header, Image, Ingredient, IngredientsContainer, ModalBody, PriceContainer } from './styles';
 import { formatCurrency } from '../../utils/formatCurrency';
 import { Button } from '../Button';
+import { Product } from '../../types/Product';
 
 interface ProductModalProps {
-  product: {
-    _id: string;
-    name: string;
-    description: string;
-    imagePath: string;
-    price: number;
-    ingredients: { name: string; icon: string; _id: string; }[];
-  } | null;
+  product: Product | null;
   visible: boolean;
   onClose: () => void;
 }
