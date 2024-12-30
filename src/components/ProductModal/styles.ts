@@ -23,3 +23,17 @@ export const ModalBody = styled.View`
 `;
 
 export const Header = styled.View``;
+
+export const IngredientsContainer = styled.View`
+  margin-top: 32px;
+  `;
+
+export const Ingredient = styled.View`
+  align-items: center;
+  border: 1px solid rgba(204, 204, 204, 0.3);
+  border-radius: 8px;
+  flex-direction: row;
+  gap: 20px;
+  margin-bottom: 4px;
+  padding: 16px;
+`;
