@@ -18,9 +18,10 @@ interface ProductModalProps {
     ingredients: { name: string; icon: string; _id: string; }[];
   } | null;
   visible: boolean;
+  onClose: () => void;
 }
 
-export function ProductModal({ product, visible }: ProductModalProps) {
+export function ProductModal({ product, visible, onClose }: ProductModalProps) {
   if (!product) {
     return null;
   }
@@ -32,7 +33,7 @@ export function ProductModal({ product, visible }: ProductModalProps) {
           uri: `http://192.168.18.92:3001/uploads/${product.imagePath}`
         }}
       >
-        <CloseButton>
+        <CloseButton onPress={onClose}>
           <Close />
         </CloseButton>
       </Image>

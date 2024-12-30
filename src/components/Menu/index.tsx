@@ -30,9 +30,14 @@ export function Menu() {
     setSelectedProduct(product);
   }
 
+  function handleCloseModal(product: Product) {
+    setIsModalVisible(false);
+    setSelectedProduct(null);
+  }
+
   return (
     <>
-      <ProductModal product={selectedProduct} visible={isModalVisible} />
+      <ProductModal product={selectedProduct} visible={isModalVisible} onClose={handleCloseModal} />
 
       <FlatList
         data={products}
