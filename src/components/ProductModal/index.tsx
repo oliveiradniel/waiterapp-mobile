@@ -27,7 +27,7 @@ export function ProductModal({ product, visible, onClose }: ProductModalProps) {
   }
 
   return (
-    <Modal animationType='slide' visible={visible}>
+    <Modal animationType='slide' presentationStyle='pageSheet' visible={visible} onRequestClose={onClose}>
       <Image
         source={{
           uri: `http://192.168.18.92:3001/uploads/${product.imagePath}`
