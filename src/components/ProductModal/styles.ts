@@ -25,8 +25,9 @@ export const ModalBody = styled.View`
 export const Header = styled.View``;
 
 export const IngredientsContainer = styled.View`
+  flex: 1;
   margin-top: 32px;
-  `;
+`;
 
 export const Ingredient = styled.View`
   align-items: center;
