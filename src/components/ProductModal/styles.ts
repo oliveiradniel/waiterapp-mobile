@@ -37,3 +37,18 @@ export const Ingredient = styled.View`
   margin-bottom: 4px;
   padding: 16px;
 `;
+
+export const Footer = styled.View`
+  background-color: #fff;
+  min-height: 110px;
+  padding: 16px 24px;
+`;
+
+export const FooterContainer = styled.SafeAreaView`
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const PriceContainer = styled.View`
+`;
