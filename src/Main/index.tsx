@@ -7,6 +7,7 @@ import { Menu } from '../components/Menu';
 import { TableModal } from '../components/TableModal';
 
 import { Container, CategoriesContainer, Footer, FooterContainer, MenuContainer } from './styles';
+import { Cart } from '../components/Cart';
 
 export function Main() {
   const [isTableModalVisible, setIsTableModalVisible] = useState(false);
@@ -38,6 +39,10 @@ export function Main() {
         <FooterContainer>
           {!selectedTable && (
             <Button onPress={() => setIsTableModalVisible(true)}>Novo pedido</Button>
+          )}
+
+          {selectedTable && (
+            <Cart />
           )}
         </FooterContainer>
       </Footer>
