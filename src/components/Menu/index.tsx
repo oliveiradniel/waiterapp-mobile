@@ -8,14 +8,18 @@ import { FlatList } from 'react-native';
 
 import { Text } from '../Text';
 
-import { ProductImage, ProductContainer, ProductDetails, Separator, AddToCardButton } from './styles';
 import { PlusCircle } from '../Icons/PlusCircle';
 import { ProductModal } from '../ProductModal';
 import { Product } from '../../types/Product';
 
+import { ProductImage, ProductContainer, ProductDetails, Separator, AddToCardButton } from './styles';
 
+interface MenuProps {
+  // eslint-disable-next-line no-unused-vars
+  onAddToCart: (product: Product) => void;
+}
 
-export function Menu() {
+export function Menu({ onAddToCart }: MenuProps) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
@@ -31,7 +35,12 @@ export function Menu() {
 
   return (
     <>
-      <ProductModal product={selectedProduct} visible={isModalVisible} onClose={handleCloseModal} />
+      <ProductModal
+        product={selectedProduct}
+        visible={isModalVisible}
+        onClose={handleCloseModal}
+        onAddToCart={onAddToCart}
+      />
 
       <FlatList
         data={products}
@@ -57,7 +66,7 @@ export function Menu() {
                 {formatCurrency(product.price)}
               </Text>
             </ProductDetails>
-            <AddToCardButton>
+            <AddToCardButton onPress={() => onAddToCart(product)}>
               <PlusCircle />
             </AddToCardButton>
           </ProductContainer>

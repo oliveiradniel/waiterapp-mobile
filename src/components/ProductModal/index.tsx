@@ -1,23 +1,32 @@
 import { FlatList, Modal } from 'react-native';
 
+import { Product } from '../../types/Product'
+;
+import { formatCurrency } from '../../utils/formatCurrency';
+
 import { Close } from '../Icons/Close';
 
 import { Text } from '../Text';
+import { Button } from '../Button';
 
 import { CloseButton, Footer, FooterContainer, Header, Image, Ingredient, IngredientsContainer, ModalBody, PriceContainer } from './styles';
-import { formatCurrency } from '../../utils/formatCurrency';
-import { Button } from '../Button';
-import { Product } from '../../types/Product';
 
 interface ProductModalProps {
   product: Product | null;
   visible: boolean;
   onClose: () => void;
+  // eslint-disable-next-line no-unused-vars
+  onAddToCart: (product: Product) => void;
 }
 
-export function ProductModal({ product, visible, onClose }: ProductModalProps) {
+export function ProductModal({ product, visible, onClose, onAddToCart }: ProductModalProps) {
   if (!product) {
     return null;
+  }
+
+  function handleAddToCart() {
+    onAddToCart(product!);
+    onClose();
   }
 
   return (
@@ -65,7 +74,7 @@ export function ProductModal({ product, visible, onClose }: ProductModalProps) {
             <Text size={20} weight={600}>{formatCurrency(product.price)}</Text>
           </PriceContainer>
 
-          <Button onPress={() => alert('Adicionar')}>Adicionar ao pedido</Button>
+          <Button onPress={handleAddToCart}>Adicionar ao pedido</Button>
         </FooterContainer>
       </Footer>
     </Modal>
