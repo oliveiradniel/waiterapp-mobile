@@ -73,7 +73,10 @@ export function Main() {
           )}
 
           {selectedTable && (
-            <Cart cartItems={cartItems} />
+            <Cart
+              cartItems={cartItems}
+              onAdd={handleAddToCart}
+            />
           )}
         </FooterContainer>
       </Footer>

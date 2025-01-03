@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 
 import { FlatList, TouchableOpacity } from 'react-native';
@@ -5,6 +6,7 @@ import { FlatList, TouchableOpacity } from 'react-native';
 import { formatCurrency } from '../../utils/formatCurrency';
 
 import { CartItem } from '../../types/CartItem';
+import { Product } from '../../types/Product';
 
 import { Text } from '../Text';
 
@@ -15,9 +17,10 @@ import { Button } from '../Button';
 
 interface CartProps {
   cartItems: CartItem[];
+  onAdd: (product: Product) => void;
 }
 
-export function Cart({ cartItems }: CartProps) {
+export function Cart({ cartItems, onAdd }: CartProps) {
   return (
     <>
       {cartItems.length > 0 && (
@@ -48,7 +51,7 @@ export function Cart({ cartItems }: CartProps) {
               </ProductContainer>
 
               <Actions>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => onAdd(cartItem.product)}>
                   <PlusCircle />
                 </TouchableOpacity>
 
