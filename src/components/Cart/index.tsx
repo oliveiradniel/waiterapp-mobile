@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
 
 import { FlatList, TouchableOpacity } from 'react-native';
 
@@ -9,6 +9,7 @@ import { CartItem } from '../../types/CartItem';
 import { Product } from '../../types/Product';
 
 import { Text } from '../Text';
+import { OrderConfirmedModal } from '../OrderConfirmedModal';
 
 import { Actions, Image, Item, ProductContainer, ProductDetails, QuantityContainer, Sumary, TotalContainer } from './styles';
 import { PlusCircle } from '../Icons/PlusCircle';
@@ -19,13 +20,30 @@ interface CartProps {
   cartItems: CartItem[];
   onAdd: (product: Product) => void;
   onDecrement: (product: Product) => void;
+  onConfirmOrder: () => void;
 }
 
-export function Cart({ cartItems, onAdd, onDecrement }: CartProps) {
+export function Cart({ cartItems, onAdd, onDecrement, onConfirmOrder }: CartProps) {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   const total = cartItems.reduce((acc, cartItem) => acc + (cartItem.quantity * cartItem.product.price), 0);
+
+  function handleConfirmOrder() {
+    setIsModalVisible(true);
+  }
+
+  function handleOk() {
+    setIsModalVisible(false);
+    onConfirmOrder();
+  }
 
   return (
     <>
+      <OrderConfirmedModal
+        visible={isModalVisible}
+        onOk={handleOk}
+      />
+
       {cartItems.length > 0 && (
         <FlatList
           data={cartItems}
@@ -79,7 +97,7 @@ export function Cart({ cartItems, onAdd, onDecrement }: CartProps) {
           )}
         </TotalContainer>
 
-        <Button disabled={cartItems.length === 0} onPress={() => alert('confirmar pedido')}>Confirmar pedido</Button>
+        <Button disabled={cartItems.length === 0} onPress={handleConfirmOrder}>Confirmar pedido</Button>
       </Sumary>
     </>
   );
