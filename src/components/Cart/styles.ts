@@ -35,4 +35,7 @@ export const Sumary = styled.View`
   justify-content: space-between;
 `;
 
-export const TotalContainer = styled.View``;
+export const TotalContainer = styled.View`
+  flex: 1;
+  margin-right: 32px;
+`;
