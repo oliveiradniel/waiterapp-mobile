@@ -8,9 +8,9 @@ import { Categories } from '../components/Categories';
 import { Header } from '../components/Header';
 import { Menu } from '../components/Menu';
 import { TableModal } from '../components/TableModal';
+import { Cart } from '../components/Cart';
 
 import { Container, CategoriesContainer, Footer, FooterContainer, MenuContainer } from './styles';
-import { Cart } from '../components/Cart';
 
 export function Main() {
   const [isTableModalVisible, setIsTableModalVisible] = useState(false);
@@ -52,6 +52,28 @@ export function Main() {
     });
   }
 
+  function handleDecrementCartItem(product: Product) {
+    setCartItems((prevState) => {
+      const itemIndex = prevState.findIndex(cartItem => cartItem.product._id === product._id);
+
+      const item = prevState[itemIndex];
+      const newCartItems = [...prevState];
+
+      if (item.quantity === 1) {
+        newCartItems.splice(itemIndex, 1);
+
+        return newCartItems;
+      }
+
+      newCartItems[itemIndex] = {
+        ...item,
+        quantity: item.quantity - 1,
+      };
+
+      return newCartItems;
+    });
+  }
+
   return (
     <>
       <Container>
@@ -76,6 +98,7 @@ export function Main() {
             <Cart
               cartItems={cartItems}
               onAdd={handleAddToCart}
+              onDecrement={handleDecrementCartItem}
             />
           )}
         </FooterContainer>
