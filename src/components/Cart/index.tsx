@@ -21,6 +21,8 @@ interface CartProps {
 }
 
 export function Cart({ cartItems, onAdd }: CartProps) {
+  const total = cartItems.reduce((acc, cartItem) => acc + (cartItem.quantity * cartItem.product.price), 0);
+
   return (
     <>
       {cartItems.length > 0 && (
@@ -69,7 +71,7 @@ export function Cart({ cartItems, onAdd }: CartProps) {
           {cartItems.length > 0 ? (
             <>
               <Text color='#666'>Total</Text>
-              <Text size={20} weight={600}>{formatCurrency(120)}</Text>
+              <Text size={20} weight={600}>{formatCurrency(total)}</Text>
             </>
           ) : (
             <Text color='#999'>Seu carrinho está vazio</Text>
