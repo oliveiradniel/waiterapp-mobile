@@ -1,6 +1,6 @@
 import { FlatList } from 'react-native';
 
-import categories from '../../mocks/categories';
+import { categories } from '../../mocks/categories';
 
 import { Text } from '../Text';
 

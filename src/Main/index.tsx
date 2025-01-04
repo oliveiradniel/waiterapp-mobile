@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+
 import { ActivityIndicator } from 'react-native';
+
+import { products as mockProducts } from '../mocks/products';
 
 import { Product } from '../types/Product';
 import { CartItem } from '../types/CartItem';
@@ -12,12 +15,14 @@ import { TableModal } from '../components/TableModal';
 import { Cart } from '../components/Cart';
 
 import { Container, CategoriesContainer, Footer, FooterContainer, MenuContainer, CenteredContainer } from './styles';
+import { Text } from '../components/Text';
 
 export function Main() {
   const [isTableModalVisible, setIsTableModalVisible] = useState(false);
   const [selectedTable, setSelectedTable] = useState('');
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [products, setProducts] = useState<Product[]>([]);
 
   function handleSaveTable(table: string) {
     setSelectedTable(table);
@@ -77,6 +82,8 @@ export function Main() {
     });
   }
 
+  console.log(!isLoading);
+
   return (
     <>
       <Container>
@@ -95,7 +102,7 @@ export function Main() {
             </CategoriesContainer>
 
             <MenuContainer>
-              <Menu onAddToCart={handleAddToCart} />
+              <Menu onAddToCart={handleAddToCart} products={products}/>
             </MenuContainer>
           </>
         )}
