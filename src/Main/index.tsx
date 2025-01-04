@@ -16,13 +16,14 @@ import { Cart } from '../components/Cart';
 
 import { Container, CategoriesContainer, Footer, FooterContainer, MenuContainer, CenteredContainer } from './styles';
 import { Text } from '../components/Text';
+import { Empty } from '../components/Icons/Empty';
 
 export function Main() {
   const [isTableModalVisible, setIsTableModalVisible] = useState(false);
   const [selectedTable, setSelectedTable] = useState('');
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>(mockProducts);
 
   function handleSaveTable(table: string) {
     setSelectedTable(table);
@@ -89,21 +90,28 @@ export function Main() {
       <Container>
         <Header onCancelOrder={handleResetOrder} selectedTable={selectedTable} />
 
-        {isLoading && (
+        {isLoading ? (
           <CenteredContainer>
             <ActivityIndicator color='#d73035' size='large' />
           </CenteredContainer>
-        )}
-
-        {!isLoading && (
+        ) : (
           <>
             <CategoriesContainer>
               <Categories />
             </CategoriesContainer>
 
-            <MenuContainer>
-              <Menu onAddToCart={handleAddToCart} products={products}/>
-            </MenuContainer>
+            {products.length > 0 ? (
+              <MenuContainer>
+                <Menu onAddToCart={handleAddToCart} products={products}/>
+              </MenuContainer>
+            ) : (
+              <CenteredContainer>
+                <Empty />
+                <Text color='#666' style={{
+                  marginTop: 24,
+                }}>Nenhum produto foi encontrado!</Text>
+              </CenteredContainer>
+            )}
           </>
         )}
       </Container>
