@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ActivityIndicator } from 'react-native';
 
 import { Product } from '../types/Product';
 import { CartItem } from '../types/CartItem';
@@ -10,12 +11,13 @@ import { Menu } from '../components/Menu';
 import { TableModal } from '../components/TableModal';
 import { Cart } from '../components/Cart';
 
-import { Container, CategoriesContainer, Footer, FooterContainer, MenuContainer } from './styles';
+import { Container, CategoriesContainer, Footer, FooterContainer, MenuContainer, CenteredContainer } from './styles';
 
 export function Main() {
   const [isTableModalVisible, setIsTableModalVisible] = useState(false);
   const [selectedTable, setSelectedTable] = useState('');
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   function handleSaveTable(table: string) {
     setSelectedTable(table);
@@ -80,19 +82,29 @@ export function Main() {
       <Container>
         <Header onCancelOrder={handleResetOrder} selectedTable={selectedTable} />
 
-        <CategoriesContainer>
-          <Categories />
-        </CategoriesContainer>
+        {isLoading && (
+          <CenteredContainer>
+            <ActivityIndicator color='#d73035' size='large' />
+          </CenteredContainer>
+        )}
 
-        <MenuContainer>
-          <Menu onAddToCart={handleAddToCart} />
-        </MenuContainer>
+        {!isLoading && (
+          <>
+            <CategoriesContainer>
+              <Categories />
+            </CategoriesContainer>
+
+            <MenuContainer>
+              <Menu onAddToCart={handleAddToCart} />
+            </MenuContainer>
+          </>
+        )}
       </Container>
 
       <Footer>
         <FooterContainer>
           {!selectedTable && (
-            <Button onPress={() => setIsTableModalVisible(true)}>Novo pedido</Button>
+            <Button disabled={isLoading} onPress={() => setIsTableModalVisible(true)}>Novo pedido</Button>
           )}
 
           {selectedTable && (
