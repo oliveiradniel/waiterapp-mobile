@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 
 import { ActivityIndicator } from 'react-native';
 
-import { products as mockProducts } from '../mocks/products';
-import { categories as mockCategories } from '../mocks/categories';
-
 import { Product } from '../types/Product';
 import { CartItem } from '../types/CartItem';
 import { Category } from '../types/Category';
@@ -25,8 +22,8 @@ export function Main() {
   const [selectedTable, setSelectedTable] = useState('');
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [products, setProducts] = useState<Product[]>(mockProducts);
-  const [categories, setCategories] = useState<Category[]>(mockCategories);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
 
   function handleSaveTable(table: string) {
     setSelectedTable(table);
