@@ -30,6 +30,9 @@ export function Main() {
   useEffect(() => {
     axios.get('http://192.168.18.92:3001/categories')
       .then(response => setCategories(response.data));
+
+    axios.get('http://192.168.18.92:3001/products')
+      .then(response => setProducts(response.data));
   }, []);
 
   function handleSaveTable(table: string) {
