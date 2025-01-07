@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { ActivityIndicator } from 'react-native';
+
+import axios from 'axios';
 
 import { Product } from '../types/Product';
 import { CartItem } from '../types/CartItem';
@@ -24,6 +26,11 @@ export function Main() {
   const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
+
+  useEffect(() => {
+    axios.get('http://192.168.18.92:3001/categories')
+      .then(response => setCategories(response.data));
+  }, []);
 
   function handleSaveTable(table: string) {
     setSelectedTable(table);
