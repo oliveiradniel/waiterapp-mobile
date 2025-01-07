@@ -8,13 +8,14 @@ import { formatCurrency } from '../../utils/formatCurrency';
 import { CartItem } from '../../types/CartItem';
 import { Product } from '../../types/Product';
 
-import { Text } from '../Text';
-import { OrderConfirmedModal } from '../OrderConfirmedModal';
-
-import { Actions, Image, Item, ProductContainer, ProductDetails, QuantityContainer, Sumary, TotalContainer } from './styles';
 import { PlusCircle } from '../Icons/PlusCircle';
 import { MinusCircle } from '../Icons/MinusCircle';
+
 import { Button } from '../Button';
+import { OrderConfirmedModal } from '../OrderConfirmedModal';
+import { Text } from '../Text';
+
+import { Actions, Image, Item, ProductContainer, ProductDetails, QuantityContainer, Sumary, TotalContainer } from './styles';
 
 interface CartProps {
   cartItems: CartItem[];
