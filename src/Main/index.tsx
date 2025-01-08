@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { ActivityIndicator } from 'react-native';
 
-import axios from 'axios';
+import { api } from '../utils/api';
 
 import { Product } from '../types/Product';
 import { CartItem } from '../types/CartItem';
@@ -29,8 +29,8 @@ export function Main() {
 
   useEffect(() => {
     Promise.all([
-      axios.get('http://192.168.18.92:3001/categories'),
-      axios.get('http://192.168.18.92:3001/products'),
+      api.get('/categories'),
+      api.get('/products'),
     ]).then(([categoriesResponse, productsResponse]) => {
       setCategories(categoriesResponse.data);
       setProducts(productsResponse.data);
