@@ -39,7 +39,11 @@ export function Main() {
   }, []);
 
   async function handleSelectCategory(categoryId: string) {
-    const { data } = await api.get(`/categories/${categoryId}/products`);
+    const route = !categoryId
+      ? '/products'
+      : `/categories/${categoryId}/products`;
+
+    const { data } = await api.get(route);
     setProducts(data);
   }
 
@@ -113,7 +117,10 @@ export function Main() {
         ) : (
           <>
             <CategoriesContainer>
-              <Categories categories={categories} onSelectCategory={handleSelectCategory} />
+              <Categories
+                categories={categories}
+                onSelectCategory={handleSelectCategory}
+              />
             </CategoriesContainer>
 
             {products.length > 0 ? (

@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "axios": "^1.7.9",
-    "expo": "~52.0.20",
+    "expo": "~52.0.24",
     "expo-font": "~13.0.2",
     "expo-status-bar": "~2.0.0",
     "intl": "^1.2.5",

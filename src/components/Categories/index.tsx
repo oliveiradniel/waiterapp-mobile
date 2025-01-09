@@ -19,7 +19,7 @@ export function Categories({ categories, onSelectCategory }: CategoriesProps) {
   function handleSelectCategory(categoryId: string) {
     const category = selectedCategory === categoryId ? '' : categoryId;
 
-    onSelectCategory(categoryId);
+    onSelectCategory(category);
     setSelectedCategory(category);
   }
 
