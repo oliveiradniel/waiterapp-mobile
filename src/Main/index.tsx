@@ -38,6 +38,11 @@ export function Main() {
     });
   }, []);
 
+  async function handleSelectCategory(categoryId: string) {
+    const { data } = await api.get(`/categories/${categoryId}/products`);
+    setProducts(data);
+  }
+
   function handleSaveTable(table: string) {
     setSelectedTable(table);
   }
@@ -108,7 +113,7 @@ export function Main() {
         ) : (
           <>
             <CategoriesContainer>
-              <Categories categories={categories} />
+              <Categories categories={categories} onSelectCategory={handleSelectCategory} />
             </CategoriesContainer>
 
             {products.length > 0 ? (
